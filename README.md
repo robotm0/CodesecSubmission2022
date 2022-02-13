@@ -1,5 +1,5 @@
 # Codesec Submission Program
-# Team - The Codons
+## Team - The Codons
 
 This program is an experimental version of an exercise helper app for the desktop.
 The program uses the webcam to make a database of exercises, and then uses pose detection in order to improve the user's form while exercising and count the number of repetitions of that exercise, along with a daily goal feature.
