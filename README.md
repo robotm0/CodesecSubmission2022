@@ -23,9 +23,9 @@ Required libraries:
 How to operate:
 Download the project and run main.py in Python 3
 
-model.tflite is licensed by Google under the Apache License.
-
 # Copyright
+
+model.tflite is work created and shared by Google under the Apache License.
 
 Portions of the movenet.py file are modifications based on work created and shared by Google and used according to terms described in the Apache 2.0 License:
 
