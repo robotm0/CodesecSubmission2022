@@ -14,7 +14,7 @@
 import math
 
 # tolerance values for checking if a given pose is correct or if it is random noise
-max_err = 1
+max_err = 0.01
 
 # check one pose against another and return the difference
 # also normalise to accommodate for changes in position and distance
