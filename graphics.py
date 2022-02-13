@@ -188,12 +188,13 @@ def practiceExercisePose(exercise):
         best_pose, best_diff, min_err = performance.make_prediction(exercise, frame_inference)
         if prevPose == "":
             prevPose = best_pose
-        if best_pose != prevPose and min_error < performance.max_error:
+        if best_pose != prevPose and min_err < performance.max_err:
             # we can say with reasonable accuracy that the pose has changed
             # 1 change in pose = 0.5 reps
             reps += 0.5
+        print(best_pose, min_err, performance.generate_suggestion(best_diff), reps)
         window['-pose-'].update(best_pose)
-        window['-err-'].update(str(round(min_err, 0.1)))
+        window['-err-'].update(str(min_err))
         window['-tip-'].update(performance.generate_suggestion(best_diff))
         window['-reps-'].update(str(round(reps)))
         graph_elem.update()

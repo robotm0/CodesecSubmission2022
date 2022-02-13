@@ -100,7 +100,7 @@ while True:
             while recordAnother:
                 new_pose_name, recordAnother = graphics.recordPoseName()
                 exercisePose = graphics.recordExercisePose()
-                if exercisePose == []:
+                if len(exercisePose) == 0:
                     sg.popup("You haven't recorded anything!")
                 else:
                     poses[new_pose_name] = exercisePose

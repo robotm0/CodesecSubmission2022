@@ -82,42 +82,45 @@ def make_prediction(exercise, pose):
 
 # generate suggestions based on the diff
 def generate_suggestion(diff):
-    KEYPOINT_DICT = {
-        'nose': 0,
-        'left_eye': 1,
-        'right_eye': 2,
-        'left_ear': 3,
-        'right_ear': 4,
-        'left_shoulder': 5,
-        'right_shoulder': 6,
-        'left_elbow': 7,
-        'right_elbow': 8,
-        'left_wrist': 9,
-        'right_wrist': 10,
-        'left_hip': 11,
-        'right_hip': 12,
-        'left_knee': 13,
-        'right_knee': 14,
-        'left_ankle': 15,
-        'right_ankle': 16
-    }
-    max_diff = ()
-    max_err = -1
-    joint_to_improve = 0
-    for joint in range(len(diff)):
-        joint_diff = diff[joint]
-        if (joint_diff[0] ** 2 + joint_diff[1] ** 2) > max_err:
-            max_err =  joint_diff[0] ** 2 + joint_diff[1] ** 2
-            max_diff = max_err
-            joint_to_improve = joint
-    # now we have the joint we need to improve the most
-    suggestion = "Move your "+KEYPOINT_DICT[joint_to_improve].replace("_", " ")+" to the "
-    if max_diff[1] < 0:
-        suggestion += "left and "
-    if max_diff[1] > 0:
-        suggestion += "right and "
-    if max_diff[0] < 0:
-        suggestion += "up"
-    if max_diff[0] > 0:
-        suggestion += "down"
-    return suggestion
+    try:
+        keypoints = [
+            'nose',
+            'left_eye',
+            'right_eye',
+            'left_ear',
+            'right_ear',
+            'left_shoulder',
+            'right_shoulder',
+            'left_elbow',
+            'right_elbow',
+            'left_wrist',
+            'right_wrist',
+            'left_hip',
+            'right_hip',
+            'left_knee',
+            'right_knee',
+            'left_ankle',
+            'right_ankle'
+        ]
+        max_diff = ()
+        max_err = -1
+        joint_to_improve = 0
+        for joint in range(len(diff)):
+            joint_diff = diff[joint]
+            if (joint_diff[0] ** 2 + joint_diff[1] ** 2) > max_err:
+                max_err =  joint_diff[0] ** 2 + joint_diff[1] ** 2
+                max_diff = joint_diff
+                joint_to_improve = joint
+        # now we have the joint we need to improve the most
+        suggestion = "Move your "+keypoints[joint_to_improve].replace("_", " ")+" to the "
+        if max_diff[1] < 0:
+            suggestion += "left and "
+        if max_diff[1] > 0:
+            suggestion += "right and "
+        if max_diff[0] < 0:
+            suggestion += "up"
+        if max_diff[0] > 0:
+            suggestion += "down"
+        return suggestion
+    except IndexError:
+        return ""
