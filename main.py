@@ -21,7 +21,7 @@ import pickle
 import datetime
 
 # some settings for customisation
-program_title = "Exercise Helper"
+program_title = "Fitness Evolution"
 theme = "DarkGreen"
 icon = "icons/trophy.png"
 
